@@ -6,6 +6,10 @@ services:
       - "5432:5432"
     volumes:
       - ./db_backup/:/home
+    environment:
+      - POSTGRES_PASSWORD=passowrd
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=dvd_rental
   app:
     build:
       dockerfile: Dockerfile.dev
