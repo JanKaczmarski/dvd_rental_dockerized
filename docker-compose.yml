@@ -7,7 +7,7 @@ services:
     volumes:
       - ./db_backup/:/home
     environment:
-      - POSTGRES_PASSWORD=passowrd
+      - POSTGRES_PASSWORD=passoword
       - POSTGRES_USER=postgres
       - POSTGRES_DB=dvd_rental
   app:
