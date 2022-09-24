@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %} {% endblock %} - FlaskApp</title>
+    <style>
+
+        .header {
+            color: #d64161;
+            font-size: 3em;
+            margin-left: 50px;
+            text-decoration: none;
+        }
+
+        .category {
+            padding: 20px;
+            margin: 10px;
+            background-color: #f7f4f4;
+        }
+
+        h {
+            margin: 10px;
+            font-size: 25px;
+        }
+
+        .content {
+            font-size: 20px;
+            width: 50%;
+            margin-left: 25%;
+            margin-right: 25%;
+        }
+
+        .explanation {
+            margin-left: 40px;
+        }
+
+        .explanation div {
+            margin-bottom: 10px;
+        }
+
+        .query a {
+            color: #d64161;
+        }
+
+        #database_a {
+            color: cadetblue;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="header">Documentation</div>
+    <hr>
+    <div class="content">
+        {% block content %}
+        <h3>General</h3>
+
+        <div class="explanation">
+            This api is small project so there is not very much to talk about so I'll be as short as possible. There are not many options as to how user
+            can choose data from database, because you can take every record or just specific ones.
+        </div>
+
+        <h4>Choose records</h4>
+
+        <div class="explanation">
+            <div>Take every record from <b>category</b> table:</div>
+            <div class="query"><a href="http://127.0.0.1:5000/category/">http://127.0.0.1:5000/category/</a></div>
+
+            <br>
+
+            <div>To take record which category_id=1 from <b>category</b> table, just pass the key and values, in query:</div>
+            <div class="query"><a href="http://127.0.0.1:5000/category/category_id=1">http://127.0.0.1:5000/category/category_id=1</a></div>
+
+            <br>
+
+            <div>To pass multiple values use <b>&</b> sign:</div>
+            <div class="query"><a href="http://127.0.0.1:5000/category/category_id=1&3&7">http://127.0.0.1:5000/category/category_id=1&3&7</a></div>
+
+            <br>
+
+            <div>To select records by multiple keys use coma <b>,</b> as a delimiter, records will appear in the order in which values were passed</div>
+            <div class="query"><a href="http://127.0.0.1:5000/category/category_id=1&3&7,name=Animation&Comedy">http://127.0.0.1:5000/category/category_id=1&3&7,name=Animation&Comedy</a></div>
+
+            <br>
+
+            <div>If you want to select a record by passing string you have to use <b>' '</b> but only if u re passing 1 value:</div>
+            <div class="query"><a href="http://127.0.0.1:5000/category/name='Action'">http://127.0.0.1:5000/category/name='Action'</a></div>
+            <div>In case of multiple string values using <b>' ' </b> will result in error</div>
+            <div class="query"><a href="http://127.0.0.1:5000/category/name=Action&Comedy">http://127.0.0.1:5000/category/name=Action&Comedy</a></div>
+
+            <br>
+
+            <div>Queries to every table works the same, you specify keys and values. Let's take <b>film</b> table for example. The <b>film</b> table has many different keys,
+            which you can check by passing table_name to query <b>/film/</b>.</div>
+            <div class="query"><a href="http://127.0.0.1:5000/film/">http://127.0.0.1:5000/film/</a></div>
+            <div>To take every record whose <b>rental_duration</b> is 6 we can pass:</div>
+            <div class="query"><a href="http://127.0.0.1:5000/film/rental_duration=6">http://127.0.0.1:5000/film/rental_duration=6</a></div>
+
+            <div>On this site you can check <a id="database_a" href="https://www.postgresqltutorial.com/postgresql-getting-started/postgresql-sample-database/">dvdrental database</a>
+            description and details.</div>
+        
+        </div>
+    
+        {% endblock %}
+    </div>
+</body>
+</html>

@@ -1,0 +1,16 @@
+version: '3'
+services:
+  postgresql:
+    image: postgres:latest
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./db_backup/:/home
+  app:
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./code/
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./code/:/app
