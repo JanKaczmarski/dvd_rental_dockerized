@@ -9,4 +9,4 @@
 - psql -U postgres
 - \c dvd_rental
 - \d 
-5. If 35 tables(rows) appear it's all good
+5. If the message returns 35 rows it's all good
